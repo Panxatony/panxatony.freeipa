@@ -1,0 +1,16 @@
+---
+#==============================================================================+
+# Description : Playbook to run server tasks for a FreeIPA install
+#
+# Supported OS: EL7
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+- name: Ensure NTP (for time synchronization) is installed.
+  yum: name=ntp state=present
+
+- name: Ensure NTP is running.
+  service: name=ntpd state=started enabled=yes
+

@@ -24,6 +24,7 @@
 - include: set-system-hostname.yml
 - include: set-hosts.yml
 - include: set-resolv.conf.yml
+- include: set-timeserver.yml
 - include: install-free-ipa.yml
 - include: set-firewall.yml
 - include: free-ipa-setup.yml
