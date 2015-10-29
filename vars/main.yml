@@ -1,0 +1,13 @@
+---
+# vars file for panxatony.freeipa
+
+freeipaserver_ip: 192.168.71.10
+freeipa_hostname: ipasrv.cs9demo.lab
+freeipa_alias: ipasrv
+freeipa_domain_search: cs9demo.lab
+freeipa_nameserver_ip: 8.8.8.8
+freeipa_gateway_ip: 192.168.71.2
+freeipa_password: secretPass
+freeipa_kerberos_realm_name: CS9DEMO.LAB
+freeipa_directory_manager_password: secretPass2
+freeipa_dns_forwarder_ip: 8.8.8.8

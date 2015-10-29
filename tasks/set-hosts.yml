@@ -1,0 +1,12 @@
+---
+#==============================================================================+
+# Description : Playbook to run server tasks for a FreeIPA install
+#
+# Supported OS: EL7
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+- name: Creates the /etc/hosts file 
+  template: src=etc-hosts.j2 dest=/etc/hosts

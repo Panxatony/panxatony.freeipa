@@ -1,0 +1,16 @@
+---
+#==============================================================================+
+# Description : Playbook to run server tasks for a FreeIPA install
+#
+# Supported OS: EL7
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+- include: set-system-hostname.yml
+- include: set-hosts.yml
+- include: set-resolv.conf.yml
+- include: install-free-ipa.yml
+- include: set-firewall.yml
+- include: free-ipa-setup.yml

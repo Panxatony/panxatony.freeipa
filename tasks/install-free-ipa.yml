@@ -1,0 +1,17 @@
+---
+#==============================================================================+
+# Description : Playbook to run server tasks for a FreeIPA install
+#
+# Supported OS: EL7
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+- name: Install ipa-server packages
+  yum: name={{ item }} state=present
+  with_items:
+   - ipa-server 
+   - bind 
+   - bind-dyndb-ldap
+
