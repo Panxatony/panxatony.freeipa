@@ -18,4 +18,15 @@
   with_items:
     - { state: 'enabled', port: '22/tcp' }
     - { state: 'enabled', port: '80/tcp' }
+    - { state: 'enabled', port: '443/tcp' }
+    - { state: 'enabled', port: '389/tcp' }
+    - { state: 'enabled', port: '636/tcp' }
+    - { state: 'enabled', port: '88/tcp' }
+    - { state: 'enabled', port: '464/tcp' }
+    - { state: 'enabled', port: '53/tcp' }
+    - { state: 'enabled', port: '80/tcp' }
+    - { state: 'enabled', port: '88/udp' }
+    - { state: 'enabled', port: '464/udp' }
+    - { state: 'enabled', port: '53/udp' }
     - { state: 'enabled', port: '123/udp' }
+ 
