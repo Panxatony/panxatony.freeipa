@@ -8,6 +8,7 @@
 #
 #==============================================================================+
 
+
 # pre-reqs
 
 - name: Install Python SELinux library.
@@ -19,8 +20,8 @@
 - name: Ensure httpd can connect to the network.
   seboolean: name=httpd_can_network_connect state=yes persistent=yes
 
-# install FreeIPA
 
+# install FreeIPA
 - include: set-system-hostname.yml
 - include: set-hosts.yml
 - include: set-resolv.conf.yml

@@ -1,6 +1,5 @@
 ---
 # handlers file for panxatony.freeipa
 
-handlers:
   - name: restart network
     service: name=network state=restarted
