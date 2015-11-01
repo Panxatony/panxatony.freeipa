@@ -1,6 +1,6 @@
 ---
 #==============================================================================+
-# Description : Playbook to run server tasks for a FreeIPA install
+# Description : Enable Firewall ports used by FreeIPA Server
 #
 # Supported OS: EL7
 #
