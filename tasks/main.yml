@@ -1,6 +1,6 @@
 ---
 #==============================================================================+
-# Description : Playbook to run server tasks for a FreeIPA install
+# Description : Role to run server tasks for a FreeIPA install
 #
 # Supported OS: EL7
 #
@@ -29,3 +29,9 @@
 - include: install-free-ipa.yml
 - include: set-firewall.yml
 - include: free-ipa-setup.yml
+
+# update Schema to support vSphere
+
+- include: add-schema-vsphere.yml
+  tags:
+     -vsphere

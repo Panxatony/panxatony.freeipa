@@ -1,6 +1,6 @@
 ---
 #==============================================================================+
-# Description : Playbook to run server tasks for a FreeIPA install
+# Description : Install FreeIPA packages
 #
 # Supported OS: EL7
 #

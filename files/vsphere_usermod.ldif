@@ -1,0 +1,8 @@
+dn: cn=users,cn=Schema Compatibility,cn=plugins,cn=config
+changetype: modify
+add: schema-compat-entry-attribute
+schema-compat-entry-attribute: objectclass=inetOrgPerson
+-
+add: schema-compat-entry-attribute
+schema-compat-entry-attribute: sn=%{sn}
+-

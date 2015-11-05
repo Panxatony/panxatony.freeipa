@@ -1,0 +1,7 @@
+dn: cn=groups,cn=Schema Compatibility,cn=plugins,cn=config
+changetype: modify
+add: schema-compat-entry-attribute
+schema-compat-entry-attribute: objectclass=groupOfUniqueNames
+-
+add: schema-compat-entry-attribute
+schema-compat-entry-attribute: uniqueMember=%mregsub("%{member}","^(.*)accounts(.*)","%1compat%2")

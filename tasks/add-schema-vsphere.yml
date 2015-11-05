@@ -1,0 +1,33 @@
+---
+#==============================================================================+
+# Description : Role to execute tasks for a FreeIPA install
+#
+# Supported OS: EL7
+#
+# Created by: Panxatony
+#
+#==============================================================================+
+
+#Copy Ldif files
+- copy: src= dest=/tmp/vsphere_usermod.ldif owner=root group=root mode=0644
+- copy: src= dest=/tmp/vsphere_groupmod.ldif owner=root group=root mode=0644
+
+- name: Extend FreeIPA Directory with vSphere User Schema
+  sudo: yes
+  command: ldapmodify -x -D "cn=Directory Manager" -f /tmp/vsphere_usermod.ldif -w {{ freeipa_directory_manager_password }}
+
+- name: Extend FreeIPA Directory with vSphere Group Schema
+  sudo: yes
+  command: ldapmodify -x -D "cn=Directory Manager" -f /tmp/vsphere_groupmod.ldif -w {{ freeipa_directory_manager_password }}
+
+- name: system permissions need to be updated to allow the new attributes.
+  command: 'ipa permission-mod "System: Read User Compat Tree" --includedattrs sn'
+  become: yes
+  become_user: admin
+  delegate_to: {{ freeipa_server_ip }}
+
+- name: system permissions need to be updated to allow the new attributes.
+  command: 'ipa permission-mod "System: Read Group Compat Tree" --includedattrs uniquemember'
+  become: yes
+  become_user: admin
+  delegate_to: {{ freeipa_server_ip }}
