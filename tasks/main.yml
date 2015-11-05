@@ -11,15 +11,20 @@
 
 # pre-reqs
 
-- name: Install Python SELinux library.
-  yum: name=libselinux-python state=present
+- name: upgrade all packages
+  yum: name=* state=latest
 
-- name: Ensure SELinux is enabled in `targeted` mode.
+- name: install IPA software group
+  yum: name={{item}} state=present
+  with_items:
+     - libselinux-python
+     - libsemanage-python
+
+- name: Ensure SELinux is enabled in `enforcing` mode.
   selinux: policy=targeted state=enforcing
 
 - name: Ensure httpd can connect to the network.
   seboolean: name=httpd_can_network_connect state=yes persistent=yes
-
 
 # install FreeIPA
 - include: set-system-hostname.yml
