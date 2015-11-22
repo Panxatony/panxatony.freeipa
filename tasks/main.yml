@@ -38,5 +38,4 @@
 # update Schema to support vSphere
 
 - include: add-schema-vsphere.yml
-  tags:
-     -vsphere
+  when: freeipa_vsphere_modify == true

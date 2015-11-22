@@ -8,11 +8,14 @@
 #
 #==============================================================================+
 
+- name: start firewalld service
+  service: name=firewalld state=started enabled=yes
+
 - name: Configure open ports with firewalld.
   firewalld:
     state: "{{ item.state }}"
     port: "{{ item.port }}"
-    zone: external
+    zone: public
     immediate: yes
     permanent: yes
   with_items:
