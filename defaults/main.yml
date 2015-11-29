@@ -21,8 +21,10 @@ freeipa_gateway_ip: 192.168.71.2
 freeipa_vsphere_modify: false
 
 #freeipa
+freeipa_install_hostgroups: true
 freeipa_hostgroups:
   - cs9lab
+  - unspecified
 
 ##epel
 epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
