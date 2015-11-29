@@ -20,3 +20,6 @@ freeipa_user_homedir: "/home"
 freeipa_gateway_ip: 192.168.71.2
 freeipa_vsphere_modify: false
 
+##epel
+epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+epel_repo_gpg_key_url: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
