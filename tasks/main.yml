@@ -13,6 +13,8 @@
 
 - name: upgrade all packages
   yum: name=* state=latest
+  tags:
+    - freeipa
 
 - name: Install EPEL repo.
   yum:
@@ -22,34 +24,44 @@
   until: '"failed" not in result'
   retries: 5
   delay: 10
+  tags:
+    - freeipa
 
 - name: Import EPEL GPG key.
   rpm_key:
     key: "{{ epel_repo_gpg_key_url }}"
     state: present
+  tags:
+    - freeipa
 
 - name: install IPA software group
   yum: name={{item}} state=present
   with_items:
      - libselinux-python
      - libsemanage-python
+  tags:
+    - freeipa
 
 - name: Ensure SELinux is enabled in `enforcing` mode.
   selinux: policy=targeted state=enforcing
+  tags:
+    - freeipa
 
 - name: Ensure httpd can connect to the network.
   seboolean: name=httpd_can_network_connect state=yes persistent=yes
+  tags:
+    - freeipa
 
 # install FreeIPA
-- include: set-system-hostname.yml
-- include: set-hosts.yml
-- include: set-resolv.conf.yml
-- include: set-timeserver.yml
-- include: install-free-ipa.yml
-- include: set-firewall.yml
-- include: free-ipa-setup.yml
+- include: set-system-hostname.yml tags=freeipa
+- include: set-hosts.yml tags=freeipa
+- include: set-resolv.conf.yml tags=freeipa
+- include: set-timeserver.yml tags=freeipa
+- include: install-free-ipa.yml tags=freeipa
+- include: set-firewall.yml tags=freeipa
+- include: free-ipa-setup.yml tags=freeipa
 
 # update Schema to support vSphere
 
-- include: add-schema-vsphere.yml
+- include: add-schema-vsphere.yml tags=freeipa
   when: freeipa_vsphere_modify == true

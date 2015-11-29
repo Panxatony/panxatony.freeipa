@@ -14,4 +14,5 @@
    - ipa-server 
    - bind 
    - bind-dyndb-ldap
-
+  tags:
+    - freeipa

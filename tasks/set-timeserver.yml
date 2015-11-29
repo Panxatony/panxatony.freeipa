@@ -10,7 +10,10 @@
 
 - name: Ensure NTP (for time synchronization) is installed.
   yum: name=ntp state=present
+  tags:
+    - freeipa
 
 - name: Ensure NTP is running.
   service: name=ntpd state=started enabled=yes
-
+  tags:
+    - freeipa

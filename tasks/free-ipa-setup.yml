@@ -10,3 +10,5 @@
 
 - name: Setup FreeIPA server
   command: ipa-server-install -a {{ freeipa_password }} --hostname={{ freeipa_hostname }} -r {{ freeipa_kerberos_realm_name }} -p {{ freeipa_directory_manager_password }} -n {{ freeipa_domain_search }} -U --setup-dns --forwarder={{ freeipa_dns_forwarder_ip }}
+  tags:
+    - freeipa
