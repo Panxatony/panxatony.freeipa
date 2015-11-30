@@ -14,5 +14,7 @@
    - ipa-server 
    - bind 
    - bind-dyndb-ldap
+  become: yes
+  become_user: root
   tags:
     - freeipa

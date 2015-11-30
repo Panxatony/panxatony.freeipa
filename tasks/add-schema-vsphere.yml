@@ -10,32 +10,37 @@
 
 #Copy Ldif files
 - copy: src= dest=/tmp/vsphere_usermod.ldif owner=root group=root mode=0644
+  become: yes
+  become_user: root
   tags:
     - freeipa
+
 - copy: src= dest=/tmp/vsphere_groupmod.ldif owner=root group=root mode=0644
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
 - name: Extend FreeIPA Directory with vSphere User Schema
   command: ldapmodify -x -D "cn=Directory Manager" -f /tmp/vsphere_usermod.ldif -w {{ freeipa_directory_manager_password }}
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
 - name: Extend FreeIPA Directory with vSphere Group Schema
   command: ldapmodify -x -D "cn=Directory Manager" -f /tmp/vsphere_groupmod.ldif -w {{ freeipa_directory_manager_password }}
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
-- name: system permissions need to be updated to allow the new attributes.
-  command: 'ipa permission-mod "System: Read User Compat Tree" --includedattrs sn'
-  become: yes
-  become_user: admin
-  tags:
-    - freeipa
+#- name: system permissions need to be updated to allow the new attributes.
+#  command: 'ipa permission-mod "System: Read User Compat Tree" --includedattrs sn'
+#  tags:
+#    - freeipa
 
-- name: system permissions need to be updated to allow the new attributes.
-  command: 'ipa permission-mod "System: Read Group Compat Tree" --includedattrs uniquemember'
-  become: yes
-  become_user: admin
-  tags:
-    - freeipa
+#- name: system permissions need to be updated to allow the new attributes.
+#  command: 'ipa permission-mod "System: Read Group Compat Tree" --includedattrs uniquemember'
+#  tags:
+#    - freeipa

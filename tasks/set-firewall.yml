@@ -10,6 +10,8 @@
 
 - name: start firewalld service
   service: name=firewalld state=started enabled=yes
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
@@ -34,5 +36,7 @@
     - { state: 'enabled', port: '464/udp' }
     - { state: 'enabled', port: '53/udp' }
     - { state: 'enabled', port: '123/udp' }
+  become: yes
+  become_user: root
   tags:
     - freeipa

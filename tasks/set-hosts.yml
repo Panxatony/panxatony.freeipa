@@ -10,5 +10,7 @@
 
 - name: Creates the /etc/hosts file 
   template: src=etc-hosts.j2 dest=/etc/hosts
+  become: yes
+  become_user: root
   tags:
     - freeipa

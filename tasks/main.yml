@@ -13,6 +13,8 @@
 
 - name: upgrade all packages
   yum: name=* state=latest
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
@@ -24,6 +26,8 @@
   until: '"failed" not in result'
   retries: 5
   delay: 10
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
@@ -31,6 +35,8 @@
   rpm_key:
     key: "{{ epel_repo_gpg_key_url }}"
     state: present
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
@@ -39,16 +45,22 @@
   with_items:
      - libselinux-python
      - libsemanage-python
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
 - name: Ensure SELinux is enabled in `enforcing` mode.
   selinux: policy=targeted state=enforcing
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
 - name: Ensure httpd can connect to the network.
   seboolean: name=httpd_can_network_connect state=yes persistent=yes
+  become: yes
+  become_user: root
   tags:
     - freeipa
 
